@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+// Fungsi sederhana untuk menghitung BMR
+double hitungBMR(char gender, double berat, double tinggi, int umur) {
+    if (gender == 'L' || gender == 'l') {
+        return 10 * berat + 6.25 * tinggi - 5 * umur + 5;
+    } else {
+        return 10 * berat + 6.25 * tinggi - 5 * umur - 161;
+    }
+}
+
+// Fungsi sederhana untuk menghitung Berat Badan Ideal
+double hitungBBIdeal(char gender, double tinggi) {
+    if (gender == 'L' || gender == 'l') {
+        return (tinggi - 100) * 0.9;
+    } else {
+        return (tinggi - 100) * 0.85;
+    }
+}
+
+int main() {
+    char gender;
+    int umur;
+    double berat,tinggi;
+    
+    printf("PROGRAM HITUNG BMR & BB IDEAL\n");
+    printf("_________________________________\n");
+    
+    // Input data sekali saja
+    printf("Umur: ");
+    scanf("%d", &umur);
+    printf("Gender (L/P): ");
+    scanf(" %c", &gender);
+    printf("Berat Badan (kg): ");
+    scanf("%lf", &berat);
+    printf("Tinggi Badan (cm): ");
+    scanf("%lf", &tinggi);
+    
+    // Hitung langsung
+    double bmr = hitungBMR(gender, berat, tinggi, umur);
+    double bbIdeal = hitungBBIdeal(gender, tinggi);
+    
+    // Tampilkan hasil
+    printf("\nHASILNYA:\n");
+    printf("BMR: %.2f kalori/hari\n", bmr);
+    printf("Berat Badan Ideal: %.2f kg\n", bbIdeal);
+    
+    return 0;
+}
